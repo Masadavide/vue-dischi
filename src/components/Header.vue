@@ -24,12 +24,14 @@ header{
   background-color: $primarycolor;
 
   .menu-logo{
+    margin-left: 20px;
     height: 100px;
     width: 100px;
     
     img{
       width: 100%;
       height: 100%;
+      padding: 15px;
     }
   }
 
