@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Luxurious+Script&family=Meow+Script&family=Parisienne&family=Rouge+Script&display=swap');
+@import '~bootstrap/scss/bootstrap.scss';
+@import '/variables.scss';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
