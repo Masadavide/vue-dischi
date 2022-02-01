@@ -1,5 +1,8 @@
 <template>
   <main>
+    <Select 
+    @genre="braniArrayFiltrato"
+    />
     <div v-if="!loading" class="container">
       <Brani 
       v-for="(brano, index) in BraniArray" 
@@ -16,18 +19,21 @@
 import axios from "axios"
 import Loader from "./commons/Loader.vue"
 import Brani from "./commons/Brani.vue"
+import Select from "./commons/Select.vue"
+
 export default {
     name: 'Main',
     data() {
         return {
             apiURL: "https://flynn.boolean.careers/exercises/api/array/music",
             BranoArray: [],
-            loading: true
+            loading: true,
         }
     },
     components: {
         Brani,
-        Loader
+        Loader,
+        Select
     },
     created(){
         this.getBrani();
@@ -46,6 +52,16 @@ export default {
                     console.log(error);
                 });
         }
+    },
+    computed: {
+      braniArrayFiltrato(){
+        console.log(this.BraniArray.filter(element => element.genre == this.selected))
+        return this.BraniArray.filter(element => element.genre == this.selected)
+
+        
+        
+      }
+
     }
 }
 </script>
