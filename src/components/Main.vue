@@ -1,8 +1,10 @@
 <template>
   <main>
-    <Select 
-    @genre="braniArrayFiltrato"
-    />
+    <div class="container">
+      <Select 
+      @genre="changeValue"
+      />
+    </div>
     <div v-if="!loading" class="container">
       <Brani 
       v-for="(brano, index) in braniArrayFiltrato" 
@@ -26,8 +28,9 @@ export default {
     data() {
         return {
             apiURL: "https://flynn.boolean.careers/exercises/api/array/music",
-            BranoArray: [],
+            branoArray: [],
             loading: true,
+            value:""
         }
     },
     components: {
@@ -44,22 +47,24 @@ export default {
                 .get(this.apiURL)
                 .then( (risposta) => {
                     // handle success
-                    this.BraniArray = risposta.data.response;
+                    this.branoArray = risposta.data.response;
                     this.loading = false;
                 })
                 .catch(function (error) {
                     // handle error
                     console.log(error);
                 });
+        },
+        changeValue(e){
+          this.value = e;
+          console.log(this.value)
         }
     },
     computed: {
       braniArrayFiltrato(){
-        console.log(this.BraniArray.filter(element => element.genre == this.selected))
-        return this.BraniArray.filter(element => element.genre == this.selected)
-
-        
-        
+        return this.branoArray.filter( (element) => {
+                return element.genre.toLowerCase().includes(this.value.toLowerCase());
+            });
       }
 
     }

@@ -1,10 +1,9 @@
 <template>
-    <select name="genre" @change="passaSelect">
-        <option value="null">Seleziona un genere</option>
-        <option value="rock">Rock</option>
-        <option value="pop">Pop</option>
-        <option value="jezz">Jezz</option>
-        <option value="metal">Metal</option>
+    <select name="genre" @change="$emit('genre', selected)" v-model="selected" class="input">
+        <option value="Rock">Rock</option>
+        <option value="Pop">Pop</option>
+        <option value="Jazz">Jazz</option>
+        <option value="Metal">Metal</option>
     </select>
     
 </template>
@@ -14,14 +13,7 @@ export default {
     name: 'Select',
     data() {
         return {
-            t: this.genre.value,
-        }
-    },
-    methods: {
-        passaSelect: function(e){
-            this.$emit('genre', e.target.value)
-            console.log(e.target.value)
-
+            selected: ""
         }
     }
 }
@@ -29,6 +21,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-    
-
+    .input{
+        margin: 0 auto;
+    }
 </style>
