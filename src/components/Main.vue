@@ -5,7 +5,7 @@
     />
     <div v-if="!loading" class="container">
       <Brani 
-      v-for="(brano, index) in BraniArray" 
+      v-for="(brano, index) in braniArrayFiltrato" 
       :key="index"
       :informazioni="brano"/>
     </div>
